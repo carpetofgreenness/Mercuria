@@ -1,3 +1,11 @@
+<% if @boat.errors.full_messages.any? %>
+  <ul>
+    <% @boat.errors.full_messages.each do | error_message| %>
+      <li><%= error_message %></li>
+      <br />
+    <% end %>
+  </ul>
+<% end %>
 <% if current_user %>
   <%= form_for @boat do |f| %>
 
