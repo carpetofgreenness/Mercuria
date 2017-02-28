@@ -1,8 +1,21 @@
 <div class="container">
 <br>
 	<% @jobs.each do |j| %>
-		<li><%=j.user.first_name %></li>
-		<li><%=j.destination %></li>
+	<div class="singlejobs">
+		<div class="row">
+			<div class="col-md-4">
+				<li>User: <%=j.user.first_name %></li>
+			</div>
+			<div class="col-md-4">
+				<li>Origin: <%= j.origin %></li>
+				<li>Destination: <%=j.destination %></li>
+			</div>
+			<div class="col-md-4">
+				<li>Cost: <%= j.cost %></li>
+				<li>Number of Containers: <%= j.containers %> </li>
+			</div>
+		</div>
+	</div>
 	<% end %>
 </div>
 
