@@ -1,5 +1,6 @@
 class BoatsController < ApplicationController
 	def index
+		@boats = Boat.all
 
 	end
 
@@ -10,7 +11,7 @@ class BoatsController < ApplicationController
 			flash[:notice] = "Your boat was created successfully"
 			redirect_to @boat
 		else
-			flas[:alert] = "There was a problem saving your comment."
+			flash[:alert] = "There was a problem saving your comment."
 			redirect_to new_comment_path
 		end
 
@@ -25,7 +26,7 @@ class BoatsController < ApplicationController
 	end
 
 	def show
-
+		@boat = Boat.find(params[:id])
 	end
 
 	private
