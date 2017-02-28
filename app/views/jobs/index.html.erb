@@ -4,15 +4,15 @@
 		<div class="singlejobs">
 			<div class="row">
 				<div class="col-md-4">
-					<li>User: <%=j.user.first_name %></li>
+					<p>User: <%=j.user.first_name %></p>
 				</div>
 				<div class="col-md-4">
-					<li>Origin: <%= j.origin %></li>
-					<li>Destination: <%=j.destination %></li>
+					<p>From: <%= j.origin %></p>
+					<p>To: <%=j.destination %></p>
 				</div>
 				<div class="col-md-4">
-					<li>Cost: <%= j.cost %></li>
-					<li>Number of Containers: <%= j.containers %> </li>
+					<p>Cost: $<%= j.cost %></p>
+					<p>Number of Containers: <%= j.containers %> </p>
 				</div>
 			</div>
 		</div>
