@@ -1,0 +1,10 @@
+<div class="container">
+<br>
+	<% @jobs.each do |j| %>
+		<li><%=j.user.first_name %></li>
+		<li><%=j.destination %></li>
+	<% end %>
+</div>
+
+
+

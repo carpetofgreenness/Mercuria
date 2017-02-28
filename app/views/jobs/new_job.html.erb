@@ -1,0 +1,15 @@
+<%= form_for @job do |j| %>
+	<%= j.label :origin %>
+	<%= j.text_field :origin %>
+
+	<%= j.label :destination %>
+	<%= j.text_field :destination %>
+
+	<%= j.label :cost %>
+	<%= j.text_field :cost %>
+
+	<%= j.label :containers %>
+	<%= j.text_field :containers %>
+
+	<%=j.submit %>
+<% end %>
