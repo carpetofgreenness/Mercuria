@@ -10,8 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228190018) do
-
   create_table "jobs", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "origin"
@@ -20,6 +18,15 @@ ActiveRecord::Schema.define(version: 20170228190018) do
     t.integer  "containers",  default: 0, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "boats", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.integer  "user_id"
+    t.integer  "container_num"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|

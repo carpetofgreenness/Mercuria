@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :users
+  
   resources :jobs
+  resources :users, only: [:show]
+  resources :boats
+  
   root 'pages#home'
   get 'pages/home'
 
