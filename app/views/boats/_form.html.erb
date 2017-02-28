@@ -1,0 +1,32 @@
+<% if @boat.errors.full_messages.any? %>
+  <ul>
+    <% @boat.errors.full_messages.each do | error_message| %>
+      <li><%= error_message %></li>
+      <br />
+    <% end %>
+  </ul>
+<% end %>
+<% if current_user %>
+  <%= form_for @boat do |f| %>
+
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :location %><br />
+      <%= f.text_field :location %>
+    </div>
+
+    <div class="field">
+      <%= f.label :container_num, "Number of Containers" %><br />
+      <%= f.number_field :container_num %> <br><br>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+<% end %>
