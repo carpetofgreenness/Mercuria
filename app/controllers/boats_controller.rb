@@ -4,6 +4,11 @@ class BoatsController < ApplicationController
 
 	end
 
+	def show
+		@boat = Boat.find(params[:id])
+		@boat_user = @boat.user
+	end
+
 	def create
 
 		@boat = current_user.boats.create(boat_params)
@@ -11,23 +16,31 @@ class BoatsController < ApplicationController
 			flash[:notice] = "Your boat was created successfully"
 			redirect_to @boat
 		else
-			flash[:alert] = "There was a problem saving your comment."
-			redirect_to new_comment_path
+			flash[:alert] = "There was a problem saving your boat."
+			redirect_to new_boat_path
 		end
 
 	end
 
 	def new
-
+		@boat = Boat.new
 	end
 
 	def edit
-
-	end
-
-	def show
 		@boat = Boat.find(params[:id])
 	end
+
+	def update
+		boat = Boat.find(params[:id])
+		boat.update_attributes(boat_params)
+		redirect_to boat
+	end
+
+	def destroy
+	  	Boat.find(params[:id]).destroy
+	  	redirect_to "/boats"
+	end
+
 
 	private
 

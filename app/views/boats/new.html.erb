@@ -1,26 +1,3 @@
 <h2>Add boat</h2>
 
-<% if current_user %>
-  <%= form_for :boat, url: boats_path do |f| %>
-
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :location %><br />
-      <%= f.text_field :location %>
-    </div>
-
-    <div class="field">
-      <%= f.label :container_num, "Number of Containers" %><br />
-      <%= f.number_field :container_num %> <br><br>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Create boat" %>
-    </div>
-  <% end %>
-
-<% end %>
+<%= render "form" %>
