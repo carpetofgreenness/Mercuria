@@ -1,0 +1,23 @@
+<div class="container">
+<br>
+	<% @jobs.each do |j| %>
+		<div class="singlejobs">
+			<div class="row">
+				<div class="col-md-4">
+					<p>User: <%=j.user.first_name %></p>
+				</div>
+				<div class="col-md-4">
+					<p>From: <%= j.origin %></p>
+					<p>To: <%=j.destination %></p>
+				</div>
+				<div class="col-md-4">
+					<p>Cost: $<%= j.cost %></p>
+					<p>Number of Containers: <%= j.containers %> </p>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+
+
