@@ -1,10 +1,10 @@
 <h1>hi</h1>
 <%= form_for @job do |j| %>
 	<%= j.label :origin %>
-	<%= select_tag(:origin, options_for_select(Locations::LOCATIONS_SELECT), :prompt => "Select origin") %>
+	<%= j.select(:origin, options_for_select(Locations::LOCATIONS), :prompt => "Select origin") %>
 
 	<%= j.label :destination %>
-	<%= select_tag(:destination, options_for_select(Locations::LOCATIONS_SELECT), :prompt => "Select destination")%> <br>
+	<%= j.select(:destination, options_for_select(Locations::LOCATIONS), :prompt => "Select destination")%> <br>
 
 	<%= j.label :cost %><br>
 	<%= j.text_field :cost %><br>

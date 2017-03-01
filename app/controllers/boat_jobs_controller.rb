@@ -14,7 +14,7 @@ class BoatJobsController < ApplicationController
 			redirect_to @boat
 		else
 			flash[:alert] = "There was a problem adding your boat to this job."
-			render :index
+			redirect_to index
 		end
 	end
 

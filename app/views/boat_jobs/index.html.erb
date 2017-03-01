@@ -7,19 +7,27 @@
 			<li><%=boat.name%></li>
 		<% end %>
 	</ul>
-<!-- 	<% if current_user %>
-	  <%= form_for @boat_user do |f| %>
+		<% if current_user %>
+			<% if @boat_job.errors.full_messages.any? %>
+			  <ul>
+			    <% @boat_job.errors.full_messages.each do | error_message| %>
+			      <li><%= error_message %></li>
+			      <br />
+			    <% end %>
+			  </ul>
+			 <% end %>
+		<%= form_for @boat_job do |f| %>
 
-	    <div class="field">
-	      <%= f.label :container_num, "Number of Containers" %><br />
-	      <%= f.number_field :container_num %> <br><br>
-	    </div>
+		    <%= f.hidden_field :job_id, value: job.id %>
 
-	    <div class="actions">
-	      <%= f.submit %>
-	    </div>
-  <% end %> -->
+		    <div class="field">
+			    <%= f.select(:boat_id, options_for_select(current_user.boats.map{ |e| [e.name, e.id]}), :prompt => "Select boat") %>
+		    </div>
 
-<% end %>
+		    <div class="actions">
+		      <%= f.submit %>
+		    </div>
+  		<% end %>
+	<% end %>
 	<hr>
 <% end %>
