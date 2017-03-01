@@ -10,7 +10,7 @@
   <%= form_for @boat do |f| %>
 
     <div class="field">
-      <%= f.label :name %><br />
+      <%= f.label :name, "Name (must be unique)" %><br />
       <%= f.text_field :name %>
     </div>
 
