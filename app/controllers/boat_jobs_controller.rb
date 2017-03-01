@@ -11,20 +11,21 @@ class BoatJobsController < ApplicationController
 		@boat_job = BoatJob.create(boat_job_params)
 		if @boat_job.save
 			flash[:notice] = "Your boat was successfully added to this job"
-			redirect_to @boat
+			redirect_to index
 		else
 			flash[:alert] = "There was a problem adding your boat to this job."
 			redirect_to index
 		end
 	end
 
-	def new
+	# def new
 
-	end
+	# end
 
-	def edit
+	# def edit
 
-	end
+	# end
+	# the new action is in index,and there is nothing to edit about a boatjob!
 
 	def show
 
