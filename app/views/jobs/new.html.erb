@@ -1,16 +1,16 @@
 <h1>hi</h1>
 <%= form_for @job do |j| %>
 	<%= j.label :origin %>
-	<%= j.text_field :origin %>
+	<%= select_tag(:origin, options_for_select(Locations::LOCATIONS_SELECT), :prompt => "Select origin") %>
 
 	<%= j.label :destination %>
-	<%= j.text_field :destination %>
+	<%= select_tag(:destination, options_for_select(Locations::LOCATIONS_SELECT), :prompt => "Select destination")%> <br>
 
-	<%= j.label :cost %>
-	<%= j.text_field :cost %>
+	<%= j.label :cost %><br>
+	<%= j.text_field :cost %><br>
 
-	<%= j.label :containers %>
-	<%= j.text_field :containers %>
+	<%= j.label :containers %><br>
+	<%= j.text_field :containers %><br>
 
 	<%=j.submit %>
 <% end %>
