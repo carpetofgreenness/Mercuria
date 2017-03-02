@@ -14,7 +14,6 @@ class JobsController < ApplicationController
 				flash[:alert] = "There was a problem saving your job"
 				redirect_to new_job_path
 			end
-
 	end
 	def show
 		@job = Job.find(params[:id])
@@ -22,9 +21,9 @@ class JobsController < ApplicationController
 	end
 	def new
 		@job = Job.new	
-		
-
-	
+	end
+	def edit
+		@job = Job.find(params[:id])
 	end
 
 	private
