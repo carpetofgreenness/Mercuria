@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-  create_table "jobs", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "origin"
-    t.string   "destination"
-    t.integer  "cost"
-    t.integer  "containers",  default: 0, null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+ActiveRecord::Schema.define(version: 20170301152816) do
+
+  create_table "boat_jobs", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "boat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "boats", force: :cascade do |t|
@@ -27,6 +26,16 @@
     t.integer  "container_num"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "origin"
+    t.string   "destination"
+    t.integer  "cost"
+    t.integer  "containers",  default: 0, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|
