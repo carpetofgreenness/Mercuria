@@ -5,6 +5,7 @@ class JobsController < ApplicationController
 
 		@job_current_user = Job.first.user.first_name
 	end
+	
 	def create
 		@job = current_user.jobs.create(job_params)
 			if @job.save
@@ -15,15 +16,32 @@ class JobsController < ApplicationController
 				redirect_to new_job_path
 			end
 	end
+	
 	def show
 		@job = Job.find(params[:id])
 		@job_user = @job.user 
+		@boat_job = BoatJob.new
+		@jobs = [@job]
 	end
+
 	def new
-		@job = Job.new	
+		@job = Job.new		
 	end
+
 	def edit
 		@job = Job.find(params[:id])
+	end
+
+	def update
+		job = Job.find(params[:id])
+		job.update_attributes(job_params)
+		redirect_to job
+	end
+
+	def destroy
+		Job.find(params[:id]).destroy
+		flash[:notice] = "Your job was deleted successfully"
+		redirect_to :back
 	end
 
 	private

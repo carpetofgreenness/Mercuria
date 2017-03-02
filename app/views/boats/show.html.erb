@@ -1,14 +1,2 @@
 <h1>Now viewing the Boat: <%=@boat.name%></h1>
-<p><strong>Owner:</strong> <%=link_to @boat_user.first_name, @boat.user %></p>
-<p><strong>Location:</strong> <%=@boat.location%></p>
-<p><strong>Number of Conatainers:</strong> <%=@boat.container_num%></p>
-<%= image_tag @boat.avatar.url(:medium) %>
-<% if current_user && @boat_user == current_user %>
-	<p>
-		<%= link_to "(edit)", edit_boat_path(@boat) %>
-		<%= link_to '(delete)', boat_path(@boat.id),
-            	data: {:confirm => 'Are you sure you want to delete your boat? This cannot be undone.'},
-            	:method => :delete
-        %>
-    </p>
-<% end %>
+<%= render "boat_card" %>

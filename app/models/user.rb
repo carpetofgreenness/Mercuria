@@ -14,6 +14,10 @@ class User < ApplicationRecord
 
   	(self.boats - Boat.find(boat_jobs.map(&:boat_id))).map{ |e| [e.name, e.id]}
   end
+
+  def full_name
+    fullname = self.first_name + " " + self.last_name
+  end
 end
 
 # look in boat_jobs to find what boats are assigned to job_id

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :boats
   resources :boat_jobs
   
-  root 'pages#home'
+  root 'boat_jobs#index'
   get 'pages/home'
 
 
