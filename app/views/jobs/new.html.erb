@@ -1,5 +1,8 @@
 <h1>hi</h1>
 <%= form_for @job do |j| %>
+	<%= j.label :name %><br>
+	<%= j.text_field :name %>
+
 	<%= j.label :origin %>
 	<%= j.select(:origin, options_for_select(Locations::LOCATIONS), :prompt => "Select origin") %>
 
