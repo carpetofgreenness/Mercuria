@@ -1,8 +1,8 @@
 <div class="container">
 <br>
 	<% @jobs.each do |j| %>
-		<div class="singlejobs">
-			<div class="row">
+		<div class="singlejobs container">
+			<div class="row jobstuff">
 				<div class="col-md-4">
 					<p><strong><%=j.name%></strong></p>
 					<p>User: <%=j.user.first_name %></p>
@@ -13,10 +13,15 @@
 				</div>
 				<div class="col-md-4">
 					<p>Cost: $<%= j.cost %></p>
-					<p>Number of Containers: <%= j.containers %> </p>
+					<p>Number of Containers: <%=
+					j.containers %></p>
 				</div>
 			</div>
+			<div class="row descriptarea">
+				<p><strong>Description:</strong> <%=j.description %></p>
+			</div>
 		</div>
+		
 	<% end %>
 </div>
 

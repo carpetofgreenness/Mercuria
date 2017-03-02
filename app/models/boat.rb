@@ -4,6 +4,7 @@ class Boat < ApplicationRecord
 	validates :name, uniqueness: true
 	has_many :boat_jobs
 	has_many :jobs, through: :boat_jobs
+	
 	validates :location, inclusion: {in: Locations::LOCATIONS}
 
 	has_attached_file :avatar, :styles =>
