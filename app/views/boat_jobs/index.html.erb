@@ -1,4 +1,6 @@
 <% @jobs.each do |job| %>
+<br>
+<br>
 	<h2>Job by <%=job.user.first_name%> <%=job.user.last_name%></h2>
 	<p>From <strong><%=job.origin%></strong> to <strong><%=job.destination%></strong> for <strong>$<%=job.cost%></strong> with <strong><%=job.containers%></strong> Containers</p>
 	<h3>Boats on this job:</h3>
