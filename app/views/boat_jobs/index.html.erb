@@ -16,12 +16,12 @@
 			    <% end %>
 			  </ul>
 			 <% end %>
-		<%= form_for @boat_job do |f| %>
+			<%= form_for @boat_job do |f| %>
 
 		    <%= f.hidden_field :job_id, value: job.id %>
 
 		    <div class="field">
-			    <%= f.select(:boat_id, options_for_select(current_user.boats.map{ |e| [e.name, e.id]}), :prompt => "Select boat") %>
+			    <%= f.select(:boat_id, options_for_select(current_user.all_my_boats(job.id)), :prompt => "Select boat") %>
 		    </div>
 
 		    <div class="actions">

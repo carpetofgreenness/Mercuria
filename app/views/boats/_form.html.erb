@@ -16,7 +16,7 @@
 
     <div class="field">
       <%= f.label :location %><br />
-      <%= select_tag(:location, options_for_select(Locations::LOCATIONS_SELECT), :prompt => "Select location") %>
+      <%= f.select(:location, options_for_select(Locations::LOCATIONS), :prompt => "Select location") %>
       <!-- locations live in app>models>locations.rb -->
     </div>
 

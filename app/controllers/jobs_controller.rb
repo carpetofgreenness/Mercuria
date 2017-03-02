@@ -29,6 +29,7 @@ class JobsController < ApplicationController
 		@job.destination = params['destination']
 		@job.cost = params['cost']
 		@job.containers = params['containers']
+		@job.name = params['name']
 
 		@job.save
 	end
@@ -36,6 +37,6 @@ class JobsController < ApplicationController
 	private
 
 	def job_params
-		params.require(:job).permit(:origin, :destination, :cost, :containers)
+		params.require(:job).permit(:name, :origin, :destination, :cost, :containers)
 	end
 end
