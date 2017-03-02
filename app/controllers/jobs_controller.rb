@@ -5,6 +5,7 @@ class JobsController < ApplicationController
 
 		@job_current_user = Job.first.user.first_name
 	end
+	
 	def create
 		@job = current_user.jobs.create(job_params)
 			if @job.save
@@ -16,15 +17,29 @@ class JobsController < ApplicationController
 			end
 
 	end
+	
 	def show
 		@job = Job.find(params[:id])
 		@job_user = @job.user 
 	end
-	def new
-		@job = Job.new	
-		
 
-	
+	def new
+		@job = Job.new		
+	end
+
+	def edit
+		@job = Job.find(params[:id])
+	end
+
+	def update
+		job = Job.find(params[:id])
+		job.update_attributes(job_params)
+		redirect_to job
+	end
+
+	def destroy
+		Job.find(params[:id]).destroy
+		redirect_to "/jobs"
 	end
 
 	private
