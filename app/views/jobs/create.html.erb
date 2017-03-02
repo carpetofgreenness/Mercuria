@@ -1,5 +1,8 @@
 <h1>hi</h1>
 <%= form_for @job do |j| %>
+	<%= j.label :name %>
+	<%= j.text_field :name %>
+
 	<%= j.label :origin %>
 	<%= j.text_field :origin %>
 
@@ -14,3 +17,5 @@
 
 	<%=j.submit %>
 <% end %>
+
+<!-- not sure if this form does anything because new.html.erb is used -h -->
