@@ -13,7 +13,9 @@
 		<% job.boats.each do |boat| %>
 			<li>
 				<%= link_to boat.name, boat%>
-				<%= link_to '(delete)', boat_job_path(job.find_boatjob(boat)), data: {:confirm => 'Are you sure you want to take this boat off this job?'}, :method => :delete %>
+				<% if current_user && (current_user == boat.user || current_user == job.user) %>
+					<%= link_to '(remove)', boat_job_path(job.find_boatjob(boat)), data: {:confirm => 'Are you sure you want to take this boat off this job?'}, :method => :delete %>
+				<% end %>
 			</li>
 		<% end %>
 	</ul>
