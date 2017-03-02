@@ -7,7 +7,7 @@
   </ul>
 <% end %>
 <% if current_user %>
-  <%= form_for @boat do |f| %>
+  <%= form_for @boat, :html => { :multipart => true } do |f| %>
 
     <div class="field">
       <%= f.label :name, "Name (must be unique)" %><br />
@@ -24,6 +24,8 @@
       <%= f.label :container_num, "Number of Containers" %><br />
       <%= f.number_field :container_num %> <br><br>
     </div>
+
+    <%= f.file_field :avatar %><br>
 
     <div class="actions">
       <%= f.submit %>
