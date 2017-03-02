@@ -15,7 +15,6 @@ class JobsController < ApplicationController
 				flash[:alert] = "There was a problem saving your job"
 				redirect_to new_job_path
 			end
-
 	end
 	
 	def show
