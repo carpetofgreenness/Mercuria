@@ -14,8 +14,16 @@
  *= require_self
  */
 
+@import 'navbar';
+
+
+
 @import "bootstrap-sprockets";
+
+
 @import "bootstrap";
+@import "bootstrap/variables";
+@import "bootstrap/navs";
 
 body {
 	padding-top: 40px;
