@@ -36,7 +36,8 @@ class BoatJobsController < ApplicationController
 	end
 
 	def destroy
-
+		boatjob = BoatJob.find(params[:id])
+		redirect_to :back
 	end
 
 	private

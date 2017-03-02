@@ -6,6 +6,23 @@
 <h2>Boats on this job:</h2>
 <ul>
 	<% @job.boats.each do |boat| %>
-		<li><%= link_to boat.name, boat%></li>
+		<li>
+			<%= link_to boat.name, boat%>
+			<%= link_to '(delete)', boat_job_path(@job.find_boatjob(boat).first.id), data: {:confirm => 'Are you sure you want to take this boat off this job?'}, :method => :delete
+	%>
+		</li>
 	<% end %>
 </ul>
+
+<%= form_for @boat_job do |f| %>
+
+    <%= f.hidden_field :job_id, value: @job.id %>
+
+    <div class="field">
+	    <%= f.select(:boat_id, options_for_select(current_user.all_my_boats(@job.id)), :prompt => "Select boat") %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Add boat to this job" %>
+    </div>
+<% end %>
