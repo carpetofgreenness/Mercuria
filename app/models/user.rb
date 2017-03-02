@@ -2,9 +2,19 @@ class User < ApplicationRecord
   has_many :boats, dependent: :destroy
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :jobs
+
+  def all_my_boats(job_id)
+
+  	boat_jobs = BoatJob.where(job_id: job_id)
+
+  	(self.boats - Boat.find(boat_jobs.map(&:boat_id))).map{ |e| [e.name, e.id]}
+  end
 end
+
+# look in boat_jobs to find what boats are assigned to job_id
+# look in self.boats and omit boats from array above
