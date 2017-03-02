@@ -22,6 +22,7 @@ class JobsController < ApplicationController
 		@job = Job.find(params[:id])
 		@job_user = @job.user 
 		@boat_job = BoatJob.new
+		@jobs = [@job]
 	end
 
 	def new
