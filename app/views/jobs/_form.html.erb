@@ -5,28 +5,31 @@
       <%= error %>
       <br>
     <% end %>
-      </span>
+    </span>
   </ul>
 <% end%>
 <% if current_user %>
   <%= form_for @job do |j| %>
-
+  <div class="field">
+    <%= j.label :name %><br>
+    <%= j.text_field :name %>
+  </div>
+  <br>
   <div class="field">
     <%= j.label :origin %>
-    <%= j.text_field :origin %>
+    <%= j.select(:origin, options_for_select(Locations::LOCATIONS), :prompt => "Select origin") %>
   </div>
-
+  <br>
   <div class="field">
     <%= j.label :destination %>
-    <%= j.text_field :destination %>
+    <%= j.select(:destination, options_for_select(Locations::LOCATIONS), :prompt => "Select destination")%> 
   </div>
-
-
+  <br>
   <div class="field">
     <%= j.label "cost" %>
     <%= j.number_field :cost %>
   </div>
-
+  <br>
   <div class="field">
     <%= j.label "containers" %>
     <%= j.number_field :containers %>

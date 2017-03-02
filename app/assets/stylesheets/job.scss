@@ -2,8 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'color';
+
 .singlejobs{
-	border:1px solid blue;
-	margin: 5px;
-	padding: 5px;
+	border:1px solid #F3DDD4;
+	margin-bottom: 5px;
+	padding: 2px;
+
+	.jobstuff{
+		background-color: $color1;
+		margin: 2px -10px 5px -10px;
+	}
+
+	.descriptarea{
+		background-color: $color2;
+		margin: 2px -10px 2px -10px;
+		
+	}
 }
+
+.error{
+	font-weight:bold;
+	color:red;
+}
+
