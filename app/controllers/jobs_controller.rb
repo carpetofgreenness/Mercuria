@@ -24,15 +24,7 @@ class JobsController < ApplicationController
 		@job = Job.new	
 		
 
-		@job.user_id = params[:current_user_id]
-		@job.origin = params['origin']
-		@job.destination = params['destination']
-		@job.cost = params['cost']
-		@job.containers = params['containers']
-		@job.name = params['name']
-		@job.description = params['description']
-
-		@job.save
+	
 	end
 
 	private

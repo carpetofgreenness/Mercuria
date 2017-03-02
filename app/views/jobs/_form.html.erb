@@ -1,3 +1,4 @@
+<br>
 <% if @job.errors.full_messages.any? %>
   <ul>
     <span class="error">
@@ -8,6 +9,7 @@
     </span>
   </ul>
 <% end%>
+
 <% if current_user %>
   <%= form_for @job do |j| %>
   <div class="field">
