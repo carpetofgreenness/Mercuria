@@ -1,4 +1,4 @@
-class Locations
+class Locations 
 	LOCATIONS = [
 		"Mexico City",
 		"Atlantis",
@@ -14,5 +14,6 @@ class Locations
 
 	LOCATIONS_SELECT = LOCATIONS.map.with_index { |e, i| [e,i+1]  }
 end
+
 
 [["text",1], ["text2",2]]

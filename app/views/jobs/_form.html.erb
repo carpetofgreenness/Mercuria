@@ -1,0 +1,46 @@
+<% if @job.errors.full_messages.any? %>
+  <ul>
+    <span class="error">
+      <% @job.errors.full_messages.each do |error| %>
+      <%= error %>
+      <br>
+    <% end %>
+      </span>
+  </ul>
+<% end%>
+<% if current_user %>
+  <%= form_for @job do |j| %>
+
+  <div class="field">
+    <%= j.label :origin %>
+    <%= j.text_field :origin %>
+  </div>
+
+  <div class="field">
+    <%= j.label :destination %>
+    <%= j.text_field :destination %>
+  </div>
+
+
+  <div class="field">
+    <%= j.label "cost" %>
+    <%= j.number_field :cost %>
+  </div>
+
+  <div class="field">
+    <%= j.label "containers" %>
+    <%= j.number_field :containers %>
+  </div>
+
+  <div class="field descriptionfield">
+    <%= j.label :description %>
+    <br>
+    <%= j.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= j.submit %>
+  </div>
+
+  <% end %>
+<% end %>
