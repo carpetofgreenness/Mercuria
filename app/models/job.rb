@@ -6,9 +6,7 @@ class Job < ApplicationRecord
 	validates :destination, inclusion: {in: Locations::LOCATIONS}
 
 	def find_boatjob(boat)
-		boatjob = BoatJob.where(:job_id==self.id && :boat_id ==boat.id)
-		# byebug
-		boatjob
+		BoatJob.where(job_id: self.id, boat_id: boat.id).first.id
 	end
 
 end

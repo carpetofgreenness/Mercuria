@@ -11,10 +11,10 @@ class BoatJobsController < ApplicationController
 		@boat_job = BoatJob.create(boat_job_params)
 		if @boat_job.save
 			flash[:notice] = "Your boat was successfully added to this job"
-			redirect_to index
+			redirect_to :back
 		else
 			flash[:alert] = "There was a problem adding your boat to this job."
-			redirect_to index
+			redirect_to :back
 		end
 	end
 
@@ -36,7 +36,8 @@ class BoatJobsController < ApplicationController
 	end
 
 	def destroy
-		boatjob = BoatJob.find(params[:id])
+		boatjob = BoatJob.find(params[:id]).destroy
+		flash[:notice] = "The boat was successfully removed form this job"
 		redirect_to :back
 	end
 
