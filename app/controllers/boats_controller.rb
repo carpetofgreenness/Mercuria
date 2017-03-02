@@ -6,7 +6,7 @@ class BoatsController < ApplicationController
 
 	def show
 		@boat = Boat.find(params[:id])
-		@boat_user = @boat.user
+		@boats = [@boat]
 	end
 
 	def create
