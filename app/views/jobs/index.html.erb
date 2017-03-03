@@ -1,5 +1,6 @@
-<%@users.each do |user| %>
+<% @users.each do |user| %>
 	<%= user.full_name %>
-	<%= render "job_card"%>
+	<% @jobs = user.jobs %>
+	<%= render partial: "job_card", locals: {jobs: @jobs} %>
 <%end%>
 
