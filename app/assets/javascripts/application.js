@@ -18,6 +18,24 @@
 
 var app = angular.module("app", [])
 
+app.controller('charCounter', function($scope) {
+  
+    $scope.warnMe = function() {
+    	if ($scope.description && $scope.description.length < 50) {
+    		$scope.warning="type more!"
+    		return "type more!"
+	    } else {
+	    	$scope.warning = ""
+	    }
+    } 
+
+    $scope.inputWarning = function() {
+    	if($scope.warnMe() == "type more!") {
+    		return "red-border"
+    	}
+    }
+});
+
 app.controller('moneyCtrl', function ($scope) {
   $scope.test = 0;
 });
