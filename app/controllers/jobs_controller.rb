@@ -2,6 +2,8 @@ class JobsController < ApplicationController
 
 	def index
 		@jobs = Job.all
+		@user = User.find(params[:id])
+		@user_jobs = @user.jobs
 		@users = User.all
 		@boat_jobs = BoatJob.all
 		@boat_job = BoatJob.new
@@ -25,6 +27,7 @@ class JobsController < ApplicationController
 		@job = Job.find(params[:id])
 		@job_user = @job.user 
 		@boat_job = BoatJob.new
+		@boat_jobs=BoatJob.all
 		@jobs = [@job]
 	end
 

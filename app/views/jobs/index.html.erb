@@ -1,4 +1,5 @@
-<%= render "job_card"%>
-
-
+<%@users.each do |user| %>
+	<%= user.full_name %>
+	<%= render "job_card"%>
+<%end%>
 

@@ -1,22 +1,9 @@
-<h1><%=@user.full_name %></h1>
-<% if current_user %>
-	<%= link_to "(edit)", edit_user_registration_path%>
-	<%= link_to '(delete)', user_path(@user.id),
-    	data: {:confirm => 'Are you sure you want to delete your account? This cannot be undone.'},
-    	:method => :delete
-	%>
-<% end %>
-<h2><%=@user.company%></h2>
-<h3><%=@user.email%></h3>
 
-<hr>
 
-<h2><%=@user.first_name%>'s Jobs</h2>
-<%= render "/jobs/job_card" %>
+<%= render "user_card" %>
 
 
 <hr>
 
 
 <h2><%=@user.first_name%>'s Boats</h2>
-<%= render "/boats/boat_card" %>

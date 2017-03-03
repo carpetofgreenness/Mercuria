@@ -1,13 +1,13 @@
 <div class="container">
 <br>
-	<% @jobs.each do |j| %>
-		<div class="singlejobs jobname container">
-			<div class="row">
-				<div class="col-md-12 ">
-					<p><strong>User: </strong><%= j.user.full_name %> <strong>Job: </strong> <%=j.name%></p>
-				</div>
-			</div>
+	<% @users.jobs.each do |j| %>
+		<div class="singlejobs container">
 			<div class="row jobstuff">
+				<div class="row">
+					<div class="col-md-12">
+						<p><strong>Job: </strong> <%=j.name%></p>
+					</div>
+				</div>
 				<div class="col-md-4">
 					<p><strong>Boat:</strong>
 						<% if @boat_jobs.where(job_id: j.id).size== 0 %>
