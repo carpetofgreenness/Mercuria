@@ -29,7 +29,10 @@
   <br>
   <div class="field">
     <%= j.label "cost" %>
-    <%= j.number_field :cost %>
+    <div ng-controller="moneyCtrl">
+    <%= j.text_field :cost, data: {"ng-model" => "test", "format" => "number"} %>
+      <!-- <input type="text" ng-model="test" format="number"/> -->
+    </div>
   </div>
   <br>
   <div class="field">
