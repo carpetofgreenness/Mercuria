@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+
 	def index
 		@jobs = Job.all
 		@users = User.all
@@ -8,7 +9,9 @@ class JobsController < ApplicationController
 	end
 	
 	def create
-		@job = current_user.jobs.create(job_params)
+		job_params[:cost] = job_params[:cost].delete!("$").delete!(",").to_f
+
+		@job = current_user.jobs.new(job_params)
 			if @job.save
 				flash[:notice] = "Your Job was successfully created"
 				redirect_to @job
