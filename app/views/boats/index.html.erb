@@ -1,7 +1,22 @@
 <h1>Boats</h1>
-<ul>
+<div class="container">
 <% @boats.each do |boat| %>
-	<li><%= link_to boat.name, boat %></li>
+	<div class="singlejobs container">
+			<div class="col-md-2">
+				<%= image_tag boat.avatar.url (:thumb) %>
+			</div>
+		<div class="row jobstuff">
+			<div class="col-md-2">
+				<strong>Name:</strong> <%= link_to boat.name, boat %>
+			</div>
+			<div class="col-md-4">
+				<strong>Location:</strong> <%= boat.location %>
+			</div>
+			<div class="col-md-4">
+				<strong>Containers:</strong> <%= boat.container_num %>
+			</div>
+		</div>
+	</div>
 <% end %>
 	
-</ul>
+</div>

@@ -1,33 +1,4 @@
-<div class="container">
-<br>
-	<% @jobs.each do |j| %>
-		<div class="singlejobs container">
-			<div class="row jobstuff">
-				<div class="col-md-4">
-					<p><strong><%=j.name%></strong></p>
-					<p>User: <%=j.user.first_name %></p>
-					
-				</div>
-				<div class="col-md-4">
-					<p>From: <%= j.origin %></p>
-					<p>To: <%=j.destination %></p>
-				</div>
-				<div class="col-md-3">
-					<p>Cost: $<%= j.cost %></p>
-					<p>Number of Containers: <%=
-					j.containers %></p>
-				</div>
-				<div class="col-md-1">
-					<p><%= link_to "(edit)", edit_job_path(j.id) %></p>
-				</div>
-			</div>
-			<div class="row descriptarea">
-				<p><strong>Description:</strong> <%=j.description %></p>
-			</div>
-		</div>
-		
-	<% end %>
-</div>
+<%= render "job_card_2"%>
 
 
 
