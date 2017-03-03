@@ -28,7 +28,7 @@
   </div>
   <br>
   <div class="field">
-    <%= j.label "cost" %>
+    <%= j.label "cost", "Cost (must be greater than $1,000)" %>
     <div ng-controller="moneyCtrl">
     <%= j.text_field :cost, data: {"ng-model" => "test", "format" => "number"} %>
       <!-- <input type="text" ng-model="test" format="number"/> -->
@@ -37,13 +37,19 @@
   <br>
   <div class="field">
     <%= j.label "containers" %>
-    <%= j.number_field :containers %>
+    <%= j.number_field :containers, min: 0 %>
   </div>
 
   <div class="field descriptionfield">
     <%= j.label :description %>
     <br>
-    <%= j.text_area :description %>
+<!--     <%= j.text_area :description, :onkeyup => "countChar(this);"%> -->
+    <div ng-app="app" ng-controller="charCounter">
+         <%= j.text_area :description, data: {"ng-model" => "description", "ng-change" => "warnMe()", "ng-class" => "inputWarning()"} %>
+         {{ description.length }}
+         {{ warning }}
+    </div>
+    <span id="description_length"></span>
   </div>
 
   <div class="actions">
