@@ -17,7 +17,7 @@ class JobsController < ApplicationController
 				redirect_to @job
 			else
 				flash[:alert] = "There was a problem saving your job"
-				redirect_to new_job_path
+				render new_job_path
 			end
 	end
 	

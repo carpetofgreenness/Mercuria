@@ -5,7 +5,8 @@ class Job < ApplicationRecord
 
 	validates :origin, inclusion: {in: Locations::LOCATIONS}
 	validates :destination, inclusion: {in: Locations::LOCATIONS}
-
+	validates_presence_of :name, :origin, :destination, :cost, :containers
+	validates :cost, :numericality => { :greater_than_or_equal_to => 1000 }	
 
 
 	def find_boatjob(boat)
