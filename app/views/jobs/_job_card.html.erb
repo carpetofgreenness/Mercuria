@@ -1,38 +1,62 @@
-<% @jobs.each do |job| %>
-	<h3><%=job.name%></h3>
-	<p>By user <strong><%= link_to job.user.full_name, job.user %></strong></p>
-	<% if current_user && current_user == job.user %>
-		<%= link_to "(edit)", edit_job_path(job) %>
-		<%= link_to '(delete)', job_path(job), data: {:confirm => 'Are you sure you want to delete this job It cannot be undone.'}, :method => :delete %>
+<div class="container">
+<br>
+	<% @jobs.each do |j| %>
+		<div class="singlejobs jobname container">
+			<div class="row">
+				<div class="col-md-12 ">
+					<p><strong>Job: </strong> <%=j.name%></p>
+				</div>
+			</div>
+			<div class="row jobstuff">
+				<div class="col-md-4">
+					<p><strong>Boat:</strong>
+						<% if @boat_jobs.where(job_id: j.id).size== 0 %>
+							None
+						<%end%>
+						<%j.boats.each do |b|%>
+							<%=link_to b.name, b%>
+					</p>	
+							<% if current_user && (current_user == b.user || current_user == j.user) %> <%= link_to '(remove)', boat_job_path(j.find_boatjob(b)), data: 
+									{:confirm => 'Are you sure you want to take this boat off this job?'},
+									:method => :delete %>
+							<%end%>
+					<%end%>
+					<p><strong>Add Boat:</strong>
+						<% if current_user %>
+							<%= form_for @boat_job do |f| %>
+
+							    <%= f.hidden_field :job_id, value: j.id %>
+
+							    <div class="field">
+								    <%= f.select(:boat_id, options_for_select(current_user.all_my_boats(j.id)), :prompt => "Select boat") %>
+							    </div>
+
+							    <div class="actions">
+							      <%= f.submit "Add" %>
+							    </div>
+							<% end %>
+						<% end %>
+					</p>
+
+				</div>
+				<div class="col-md-4">
+					<p><strong>From:</strong> <%= j.origin %></p>
+					<p><strong>To:</strong> <%=j.destination %></p>
+
+				</div>
+				<div class="col-md-3">
+					<p><strong>Cost:</strong> $<%= j.cost %></p>
+					<p><strong>Containers Needed:</strong> <%=
+					j.containers %></p>
+				</div>
+				<div class="col-md-1">
+					<p><%= link_to "(edit)", edit_job_path(j.id) %></p>
+				</div>
+			</div>
+			<div class="row descriptarea">
+				<p><strong>Description:</strong> <%=j.description %></p>
+			</div>
+		</div>
+		
 	<% end %>
-	<p><strong>From:</strong> <%=job.origin%></p>
-	<p><strong>To:</strong> <%=job.destination%></p>
-	<p><strong>Cost: </strong><%=number_to_currency(job.cost)%></p>
-	<p><strong>Description:</strong> <%=job.description%></p>
-	<h4>Boats on this job:</h4>
-	<ul>
-		<% job.boats.each do |boat| %>
-			<li>
-				<%= link_to boat.name, boat%>
-				<% if current_user && (current_user == boat.user || current_user == job.user) %>
-					<%= link_to '(remove)', boat_job_path(job.find_boatjob(boat)), data: {:confirm => 'Are you sure you want to take this boat off this job?'}, :method => :delete %>
-				<% end %>
-			</li>
-		<% end %>
-	</ul>
-	<% if current_user %>
-		<%= form_for @boat_job do |f| %>
-
-		    <%= f.hidden_field :job_id, value: job.id %>
-
-		    <div class="field">
-			    <%= f.select(:boat_id, options_for_select(current_user.all_my_boats(job.id)), :prompt => "Select boat") %>
-		    </div>
-
-		    <div class="actions">
-		      <%= f.submit "Add" %>
-		    </div>
-		<% end %>
-	<% end %>
-	<hr>
-<% end %>
+</div>

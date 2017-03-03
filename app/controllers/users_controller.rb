@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 		@boats = @user.boats
 		@jobs = @user.jobs
 		@boat_job = BoatJob.new
+		@boat_jobs = BoatJob.all
 	end
 
 	def index
