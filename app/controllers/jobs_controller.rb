@@ -2,7 +2,8 @@ class JobsController < ApplicationController
 	def index
 		@jobs = Job.all
 		@users = User.all
-
+		@boat_jobs = BoatJob.all
+		@boat_job = BoatJob.new
 		@job_current_user = Job.first.user.first_name
 	end
 	
