@@ -1,30 +1,26 @@
 <div class="container">
 <br>
-	<% @jobs.each do |j| %>
-
-		<div class="singlejobs jobname container">
-			<div class="row">
-				<div class="col-md-12 ">
-					<p><strong>Job: </strong> <%=j.name%></p>
-				</div>
-			</div>
+	<% @users.jobs.each do |j| %>
+		<div class="singlejobs container">
 			<div class="row jobstuff">
+				<div class="row">
+					<div class="col-md-12">
+						<p><strong>Job: </strong> <%=j.name%></p>
+					</div>
+				</div>
 				<div class="col-md-4">
 					<p><strong>Boat:</strong>
-
 						<% if @boat_jobs.where(job_id: j.id).size== 0 %>
 							None
 						<%end%>
 						<%j.boats.each do |b|%>
 							<%=link_to b.name, b%>
-
 					</p>	
 							<% if current_user && (current_user == b.user || current_user == j.user) %> <%= link_to '(remove)', boat_job_path(j.find_boatjob(b)), data: 
 									{:confirm => 'Are you sure you want to take this boat off this job?'},
 									:method => :delete %>
 							<%end%>
 					<%end%>
-
 					<p><strong>Add Boat:</strong>
 						<% if current_user %>
 							<%= form_for @boat_job do |f| %>

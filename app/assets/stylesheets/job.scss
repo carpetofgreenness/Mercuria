@@ -4,8 +4,11 @@
 
 @import 'color';
 
+.jobname{
+	background-color: $jobnamecolor;
+}
 .singlejobs{
-	border:1px solid $color3;
+	
 	margin-bottom: 5px;
 	padding: 2px;
 

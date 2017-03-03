@@ -1,0 +1,22 @@
+<div class="container singleuser">
+<h1>User: <%=@user.full_name %></h1>
+<% if current_user %>
+
+	
+
+<h2>Company: <%=@user.company%></h2>
+<h3>Email: <%=@user.email%></h3>
+	<%= link_to "(edit)", edit_user_registration_path%>
+<%= link_to '(delete)', user_path(@user.id),
+    	data: {:confirm => 'Are you sure you want to delete your account? This cannot be undone.'},
+    	:method => :delete
+	%>
+<% end %>
+
+<hr>
+
+<h2>Jobs</h2>
+<%= render "jobs/job_card" %>
+<h2>Boats</h2>
+<%= render "boats/boat_card" %>
+</div>
