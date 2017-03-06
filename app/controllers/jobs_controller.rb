@@ -6,6 +6,9 @@ class JobsController < ApplicationController
 		@boat_jobs = BoatJob.all
 		@boat_job = BoatJob.new
 		@job_current_user = Job.first.user.first_name
+		@boat = Boat.find(1)
+		@boats = [@boat]
+
 	end
 	
 	def create

@@ -23,9 +23,14 @@
 
 
 		</div>
-	<div class="row">
-		<% @jobs = user.jobs %>
-		<%= render partial: "job_card", locals: {jobs: @jobs} %>
+		<div class="row">
+			<% @jobs = user.jobs %>
+			<%= render partial: "job_card", locals: {jobs: @jobs} %>
+
+		</div>
+			
+		
+		<div class= "row">
 		</div>
 	</div>
 	<br>
