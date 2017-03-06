@@ -12,7 +12,12 @@ class User < ApplicationRecord
 
   	boat_jobs = BoatJob.where(job_id: job_id)
 
-  	(self.boats - Boat.find(boat_jobs.map(&:boat_id))).map{ |e| [e.name, e.id]}
+  	(self.boats - Boat.find(boat_jobs.map(&:boat_id))).map{ |e| [e.name, e.id] }
+  end
+
+  def all_my_jobs(boat_id)
+    boat_jobs = BoatJob.where(boat_id: boat_id)
+    (self.jobs - Job.find(boat_jobs.map(&:job_id))).map{ |e| [e.name, e.id] }
   end
 
   def full_name

@@ -21,8 +21,8 @@
 									:method => :delete %>
 							<%end%>
 					<%end%>
-					<p><strong>Add Boat:</strong>
-						<% if current_user %>
+					<% if current_user %>
+						<p><strong>Add Boat:</strong>
 							<%= form_for @boat_job do |f| %>
 
 							    <%= f.hidden_field :job_id, value: j.id %>
@@ -35,8 +35,8 @@
 							      <%= f.submit "Add" %>
 							    </div>
 							<% end %>
-						<% end %>
-					</p>
+						</p>
+					<% end %>
 
 				</div>
 				<div class="col-md-4">

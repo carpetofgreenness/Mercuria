@@ -23,4 +23,18 @@
 			</li>	
 		<% end %>
 	</ul>
+	<% if current_user  && (current_user == boat.user) %>
+		<p><strong>Add Job:</strong></p>
+		<%= form_for @boat_job do |f| %>
+			<%= f.hidden_field :boat_id, value: boat.id %>
+
+			<div class="field">
+				<%= f.select(:job_id, options_for_select(current_user.all_my_jobs(boat.id)), :prompt => "Select Job")%>
+			</div>
+
+			<div class="actions">
+		      <%= f.submit "Add" %>
+		    </div>
+		<% end %>
+	<% end %>
 <% end %>
