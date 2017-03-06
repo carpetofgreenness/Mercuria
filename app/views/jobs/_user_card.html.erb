@@ -1,0 +1,10 @@
+<div class="container">
+	<p>
+		<strong>Job:</strong> <%=@jobs.name%>
+		</p>
+		<p><strong>User:</strong> <%=@jobs.user.first_name%> <%= @jobs.user.last_name%>
+		</p>
+	<p>
+		<strong>Company:</strong> <%=@jobs.user.company %>
+	</p>
+</div>

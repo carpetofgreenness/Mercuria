@@ -1,20 +1,48 @@
 <div class="container">
 <br>
 	<% @jobs.each do |j| %>
+
 		<div class="singlejobs jobname container">
 			<div class="row">
 				<div class="col-md-12 ">
-					<p><strong>Job: </strong> <%=j.name%></p>
+					<p><strong>Job: </strong> <%=j.name%>
+					<%= link_to "(edit)", edit_job_path(j.id) %></p>
 				</div>
 			</div>
+			<div class="row descriptarea">
+				<p><strong>Description:</strong> <%=j.description %></p>
+			</div>
 			<div class="row jobstuff">
+				<div class="row">
+					
+					<div class="col-md-4">
+						<p><strong>From:</strong> <%= j.origin %></p>
+						<p><strong>To:</strong> <%=j.destination %></p>
+
+					</div>
+					<div class="col-md-4">
+						<p><strong>Cost:</strong> $<%= j.cost %></p>
+						<p><strong>Containers Needed:</strong> <%=
+						j.containers %></p>
+					</div>
+					<div class="col-md-2">
+						
+					</div>
+				</div>
 				<div class="col-md-4">
-					<p><strong>Boat:</strong>
+					<p><strong>Boats:</strong>
+
 						<% if @boat_jobs.where(job_id: j.id).size== 0 %>
 							None
 						<%end%>
 						<%j.boats.each do |b|%>
-							<%=link_to b.name, b%>
+							
+						<!--new code-->
+						<p>
+							<%=render partial: "boats/job_boat_card", locals: {boat: b, jobs: j}%>
+						</p>
+						<!--new code-->
+					
 					</p>	
 							<% if current_user && (current_user == b.user || current_user == j.user) %> <%= link_to '(remove)', boat_job_path(j.find_boatjob(b)), data: 
 									{:confirm => 'Are you sure you want to take this boat off this job?'},
@@ -34,29 +62,16 @@
 							    <div class="actions">
 							      <%= f.submit "Add" %>
 							    </div>
+								
 							<% end %>
 						</p>
 					<% end %>
 
-				</div>
-				<div class="col-md-4">
-					<p><strong>From:</strong> <%= j.origin %></p>
-					<p><strong>To:</strong> <%=j.destination %></p>
 
 				</div>
-				<div class="col-md-3">
-					<p><strong>Cost:</strong> $<%= j.cost %></p>
-					<p><strong>Containers Needed:</strong> <%=
-					j.containers %></p>
-				</div>
-				<div class="col-md-1">
-					<p><%= link_to "(edit)", edit_job_path(j.id) %></p>
-				</div>
+				
 			</div>
-			<div class="row descriptarea">
-				<p><strong>Description:</strong> <%=j.description %></p>
-			</div>
+			
 		</div>
-		
 	<% end %>
 </div>
